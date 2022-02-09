@@ -1,9 +1,9 @@
 
 class BMS_Parameter_Range:
 
-    def __init__(self,min,max):
-        self.min = min
-        self.max = max
+    def __init__(self, min, max):
+        self.minimum_value = min
+        self.maximum_value = max
 
-    def isValueInRange(self,parameterValue):
-        return not(parameterValue < self.min or parameterValue > self.max)
+    def isValueInRange(self, parameterValue):
+        return not(parameterValue < self.minimum_value or parameterValue > self.maximum_value)
