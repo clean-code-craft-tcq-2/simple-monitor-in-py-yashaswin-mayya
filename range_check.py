@@ -6,4 +6,4 @@ class BMS_Parameter_Range:
         self.maximun_value = max
 
     def isValueInRange(self, parameterValue):
-        return ((parameterValue > self.minimum_value) and (parameterValue < self.maximum_value))
+        return not(parameterValue < self.minimum_value or parameterValue > self.minimun_value)
