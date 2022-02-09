@@ -1,8 +1,6 @@
 import range_check
 
-class BMS_Parameters_Range_Test():
-
-  def Tester(self, BMS_Parameter, BMS_Parameter_value, expected_result):
+def Tester(BMS_Parameter, BMS_Parameter_value, expected_result):
 
     if (BMS_Parameter == 'Temperature'):
       range_check.BMS_Parameter_Range(0, 45)
@@ -11,10 +9,10 @@ class BMS_Parameters_Range_Test():
     elif (BMS_Parameter == "Charge Rate"):
       range_check.BMS_Parameter_Range(0, 0.8)
 
-    assert(range_check.BMS_Parameter_Range().isValueInRange(BMS_Parameter_value) is expected_result)
+    assert(range_check.isValueInRange(BMS_Parameter_value) is expected_result)
   
-if __name__ == '__main__':
-  Battery_Test_Object = BMS_Parameters_Range_Test()
 
-  Battery_Test_Object.Tester('Temperature', 30, True)
+
+if __name__ == '__main__':
+  Tester('Temperature', 30, True)
   print('All is Well!')
