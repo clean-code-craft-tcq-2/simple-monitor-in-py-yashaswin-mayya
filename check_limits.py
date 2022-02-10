@@ -9,6 +9,8 @@ class BMS_range_test:
     print_on_console(self.obtained_result, BMS_parameter)
 
 
+
+
 def print_on_console(obtained_result, BMS_parameter):
     
   console_print_string = BMS_parameter.replace('_', ' ') #To remove undrscore (_) while displaying on console
@@ -19,21 +21,8 @@ def print_on_console(obtained_result, BMS_parameter):
     print(f'{console_print_string} is out of defined range\n')
 
       
-  
-if __name__ == '__main__':
-  
-  
-  parameters_dict = {}
-  parameters_dict.update({'Temperature' : range_check.BMS_parameter_range(0, 45)})
-  parameters_dict.update({'State_of_Charge' : range_check.BMS_parameter_range(20, 80)})
-  parameters_dict.update({'Charge_Rate' : range_check.BMS_parameter_range(0, 0.8)})
-  #new parameters can be added here with range without disturbing other code
 
-
-
-  battery_tester_object = BMS_range_test()
-
-
+def test_design():
 
   #Test Cases for various conditions
   
@@ -65,5 +54,21 @@ if __name__ == '__main__':
   battery_tester_object.tester('Temperature', 0-0.1, False)
   battery_tester_object.tester('State_of_Charge', 20-0.1, False)
   battery_tester_object.tester('Charge_Rate', 0-0.1, False)
+
+
+  
+if __name__ == '__main__':
+  
+  
+  parameters_dict = {}
+  parameters_dict.update({'Temperature' : range_check.BMS_parameter_range(0, 45)})
+  parameters_dict.update({'State_of_Charge' : range_check.BMS_parameter_range(20, 80)})
+  parameters_dict.update({'Charge_Rate' : range_check.BMS_parameter_range(0, 0.8)})
+  #new parameters can be added here with range without disturbing other code
+
+
+
+  battery_tester_object = BMS_range_test()
+  test_design()
 
   print('All is Well!')
