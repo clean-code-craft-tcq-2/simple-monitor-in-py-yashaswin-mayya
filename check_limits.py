@@ -6,19 +6,19 @@ class BMS_range_test:
 
     self.obtained_result = parameters_dict.get(BMS_parameter).isValueInRange(BMS_parameter_value)
     assert(self.obtained_result is expected_result)
-    print_on_console(self.obtained_result, BMS_parameter)
+    print_on_console(self.obtained_result, BMS_parameter, BMS_parameter_value)
 
 
 
 
-def print_on_console(obtained_result, BMS_parameter):
+def print_on_console(obtained_result, BMS_parameter, BMS_parameter_value):
     
   console_print_string = BMS_parameter.replace('_', ' ') #To remove undrscore (_) while displaying on console
 
   if (obtained_result == True):
-    print(f'{console_print_string} is within defined range\n')
+    print(f'{console_print_string}: {BMS_parameter_value} is within defined range\n')
   else:
-    print(f'{console_print_string} is out of defined range\n')
+    print(f'{console_print_string}: {BMS_parameter_value} is out of defined range\n')
 
       
 
