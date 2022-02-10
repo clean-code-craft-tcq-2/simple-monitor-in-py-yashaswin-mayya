@@ -22,8 +22,21 @@ def print_on_console(obtained_result, BMS_parameter, BMS_parameter_value):
 
       
 
-def test_design():
+  
+if __name__ == '__main__':
+  
+  
+  parameters_dict = {}
+  parameters_dict.update({'Temperature' : range_check.BMS_parameter_range(0, 45)})
+  parameters_dict.update({'State_of_Charge' : range_check.BMS_parameter_range(20, 80)})
+  parameters_dict.update({'Charge_Rate' : range_check.BMS_parameter_range(0, 0.8)})
+  #new parameters can be added here with range without disturbing other code
 
+
+
+  battery_tester_object = BMS_range_test()
+  
+  
   #Test Cases for various conditions
   
   #Condition_1 - Values in Valid Range with Equivalence Class Partition(ECP)
@@ -54,21 +67,5 @@ def test_design():
   battery_tester_object.tester('Temperature', 0-0.1, False)
   battery_tester_object.tester('State_of_Charge', 20-0.1, False)
   battery_tester_object.tester('Charge_Rate', 0-0.1, False)
-
-
-  
-if __name__ == '__main__':
-  
-  
-  parameters_dict = {}
-  parameters_dict.update({'Temperature' : range_check.BMS_parameter_range(0, 45)})
-  parameters_dict.update({'State_of_Charge' : range_check.BMS_parameter_range(20, 80)})
-  parameters_dict.update({'Charge_Rate' : range_check.BMS_parameter_range(0, 0.8)})
-  #new parameters can be added here with range without disturbing other code
-
-
-
-  battery_tester_object = BMS_range_test()
-  test_design()
 
   print('All is Well!')
