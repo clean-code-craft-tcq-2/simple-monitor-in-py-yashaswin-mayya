@@ -8,7 +8,7 @@ class BMS_range_test:
     assert(self.obtained_result is expected_result)
 
 
-    console_print_string = BMS_parameter.replace('_',' ') #TO remove undrscore (_) while displaying on console
+    console_print_string = BMS_parameter.replace('_', ' ') #TO remove undrscore (_) while displaying on console
 
     if (self.obtained_result == True):
       print(f'{console_print_string} is within defined range\n')
