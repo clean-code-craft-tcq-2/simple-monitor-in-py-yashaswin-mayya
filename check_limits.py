@@ -1,24 +1,31 @@
 import range_check
+from extensions import *
+
+warning_for_temperature = True
+warning_for_SOC = True
+warning_for_Charge_Rate = True
 
 class BMS_range_test:
   
-  def tester(self, BMS_parameter, BMS_parameter_value, expected_result):
+  def tester(self, BMS_parameter_name, BMS_parameter_value, expected_result):
 
-    self.obtained_result = parameters_dict.get(BMS_parameter).isValueInRange(BMS_parameter_value)
+    battery_parameter_object = parameters_dict.get(BMS_parameter_name)
+    self.obtained_result = battery_parameter_object.isValueInRange(BMS_parameter_value)
     assert(self.obtained_result is expected_result)
-    print_on_console(self.obtained_result, BMS_parameter, BMS_parameter_value)
+    print_on_console(self.obtained_result, battery_parameter_object, BMS_parameter_name, BMS_parameter_value)
 
 
 
 
-def print_on_console(obtained_result, BMS_parameter, BMS_parameter_value):
+def print_on_console(obtained_result, battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
-  console_print_string = BMS_parameter.replace('_', ' ') #To remove undrscore (_) while displaying on console
+  console_print_string = BMS_parameter_name.replace('_', ' ') #To remove undrscore (_) while displaying on console
 
   if (obtained_result == True):
-    print(f'{console_print_string}: {BMS_parameter_value} is within defined range\n')
+    print(f'\n{console_print_string}: {BMS_parameter_value} is within defined range')
+    print_early_warnings(battery_parameter_object, BMS_parameter_name, BMS_parameter_value)
   else:
-    print(f'{console_print_string}: {BMS_parameter_value} is out of defined range\n')
+    print(f'\n{console_print_string}: {BMS_parameter_value} is out of defined range')
 
       
 
