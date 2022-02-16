@@ -1,3 +1,17 @@
+***Extensions Included ***
+
+Extension 1: Early Warning
+    A warning message is issued if value is found to be within 5% near breach limits
+    For now, warning is issued for all parameter.
+    However, they can be turned off for individual parameters too
+    Also, easy to add new parameters in future
+
+Extension 2 : Extension 2: Support a language in addition to English
+    Support is added for German language along with English
+    Ther eis flexibility to turn off English/German for now
+    Also, easy to add new languages just by specifying in dictionary and creating a print function
+
+
 # Programming Paradigms
 
 Electric Vehicles have BMS - Battery Management Systems
