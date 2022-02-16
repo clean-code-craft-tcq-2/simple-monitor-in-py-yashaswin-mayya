@@ -25,13 +25,23 @@ def print_on_console_main(range_specifier, battery_parameter_object, BMS_paramet
     
 def print_on_console_english(range_specifier, battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
-    if(range_specifier == 'NORMAL' or 'LOW_Warning' or 'HIGH_WARNING'):
-        print(f'\nEN: {BMS_parameter_name}: {BMS_parameter_value} is within defined range')
-        print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value)
-    elif(range_specifier == 'LOW_BREACH'):
-        print(f'\nEN: {BMS_parameter_name}: {BMS_parameter_value} is below the lower limit')
+    range_specifier_to_print = {
+        'LOW_BREACH' : 'is below lower limit',
+        'HIGH_BREACH' : 'is above upper limit',
+        'LOW_WARNING' : 'is approaching the lower limit',
+        'HIGH_WARNING' : 'is approaching the lower limit',
+        'NORMAL' : 'is within defined range'
+    }
+
+    if not(warning_indicator.get(BMS_parameter_name)):
+        range_specifier_to_print.update({'LOW_WARNING' : 'is within defined range'})
+        range_specifier_to_print.update({'HIGH_WARNING' : 'is within defined range'})
+        print(f'\nEN: {BMS_parameter_name}: {BMS_parameter_value} {range_specifier_to_print.get(range_specifier)}')
+    
     else:
-        print(f'\nEN: {BMS_parameter_name}: {BMS_parameter_value} is above the upper limit')
+        print(f'\nEN: {BMS_parameter_name}: {BMS_parameter_value} {range_specifier_to_print.get(range_specifier)}')
+
+
 
 
 
@@ -43,44 +53,29 @@ def print_on_console_german(range_specifier, battery_parameter_object, BMS_param
         'Charge Rate' : 'Laderate'
     }
 
+
+    range_specifier_to_print = {
+        'LOW_BREACH' : 'liegt unter dem unteren brenzwert',
+        'HIGH_BREACH' : 'liegt über der obergrenze',
+        'LOW_WARNING' : ' nähert sich der Untergrenze',
+        'HIGH_WARNING' : 'nähert sich der oberen Grenze',
+        'NORMAL' : 'liegt im definierten bereich'
+    }
+
     BMS_parameter_name_german = BMS_parameter_name_translator_to_german.get(BMS_parameter_name_english)
 
+
+    if not(warning_indicator.get(BMS_parameter_name_german)):
+        range_specifier_to_print.update({'LOW_WARNING' : 'is within defined range'})
+        range_specifier_to_print.update({'HIGH_WARNING' : 'is within defined range'})
+        print(f'\nEN: {BMS_parameter_name_german}: {BMS_parameter_value} {range_specifier_to_print.get(range_specifier)}')
     
-    if(range_specifier == 'NORMAL'):
-        print(f'\nDE: {BMS_parameter_name_german}: {BMS_parameter_value} liegt im definierten bereich')
-        print_early_warnings_german(battery_parameter_object, BMS_parameter_name_german, BMS_parameter_value)
-    elif(range_specifier == 'LOW_BREACH'):
-        print(f'\nDE: {BMS_parameter_name_german}: {BMS_parameter_value} liegt unter dem unteren brenzwert')
     else:
-        print(f'\nDE: {BMS_parameter_name_german}: {BMS_parameter_value} liegt über der obergrenze')
+        print(f'\nEN: {BMS_parameter_name_german}: {BMS_parameter_value} {range_specifier_to_print.get(range_specifier)}')
 
 
 
 
-def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
-    
-    tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
-
-    warning_range_specifier = {
-        'LOW_WARNING' : 'is approaching the lower limit',
-        'HIGH_WARNING' : 'is approaching the upper limit'
-    }
-    
-    
-    if(tolerance_specifier_function == 'LOW_WARNING' or tolerance_specifier_function == 'HIGH_WARNING' and warning_indicator.get(BMS_parameter_name) == True):
-        print(f'EN: Warning! {BMS_parameter_name} {warning_range_specifier.get(tolerance_specifier_function)}')
-
-
-
-def print_early_warnings_german(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
-    
-    tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
-    
-    if (warning_indicator.get(BMS_parameter_name)):
-        if(tolerance_specifier_function == 'LOW_WARNING'):
-            print(f'DE: Warnung! {BMS_parameter_name} nähert sich der untergrenze')
-        elif(tolerance_specifier_function == 'HIGH_WARNING'):
-            print(f'DE: Warnung! {BMS_parameter_name} nähert sich der oberen grenze')
 
 
 

@@ -12,6 +12,8 @@ class BMS_range_test:
     self.obtained_result_mapping ={
       'LOW_BREACH' : False,
       'HIGH_BREACH' : False,
+      'LOW_WARNING' : True,
+      'HIGH_WARNING' : True,
       'NORMAL' : True
     }
     
