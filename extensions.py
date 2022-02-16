@@ -72,28 +72,3 @@ def print_on_console_german(range_specifier, battery_parameter_object, BMS_param
     
     else:
         print(f'\nEN: {BMS_parameter_name_german}: {BMS_parameter_value} {range_specifier_to_print.get(range_specifier)}')
-
-
-
-
-
-
-
-
-# Temperatur liegt im definierten Bereich
-# Temperatur liegt unter dem unteren Grenzwert
-# Temperatur liegt über der Obergrenze
-
-
-# Ladezustand liegt im definierten Bereich
-# Ladezustand liegt unter dem unteren Grenzwert
-# Ladezustand liegt über der Obergrenze
-
-# Laderate liegt im definierten Bereich
-# Laderate liegt unter dem unteren Grenzwert
-# Laderate liegt über der Obergrenze
-
-
-# Warning = Warnung
-# is approaching the lower limit = nähert sich der Untergrenze
-# is approaching the upper limit = nähert sich der oberen Grenze

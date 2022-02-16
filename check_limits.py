@@ -9,7 +9,7 @@ class BMS_range_test:
   
   def tester(self, BMS_parameter_name, BMS_parameter_value, expected_result):
 
-    self.obtained_result_mapping ={
+    self.obtained_result_mapping = {
       'LOW_BREACH' : False,
       'HIGH_BREACH' : False,
       'LOW_WARNING' : True,

@@ -11,7 +11,8 @@ class BMS_parameter_range:
         elif(parameterValue>self.maximum_value):
             return 'HIGH_BREACH'
         else:
-            BMS_parameter_range.tolerance_specifier_function(parameterValue)
+            return self.tolerance_specifier_function(parameterValue)
+            
 
     
     def tolerance_specifier_function(self, parameterValue):
