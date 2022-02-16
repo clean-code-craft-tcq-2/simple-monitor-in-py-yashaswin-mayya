@@ -59,6 +59,9 @@ def print_on_console_german(range_specifier, battery_parameter_object, BMS_param
 
 def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
+    if (warning_indicator.get(BMS_parameter_name) == False):
+        return
+
     tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
 
     warning_range_specifier ={
@@ -66,9 +69,9 @@ def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, B
         'HIGH_WARNING' : 'is approaching the upper limit'
     }
     
-    if (warning_indicator.get(BMS_parameter_name)):
-        if(tolerance_specifier_function == 'LOW_WARNING' or tolerance_specifier_function == 'HIGH_WARNING'):
-            print(f'EN: Warning! {BMS_parameter_name} {warning_range_specifier.get(tolerance_specifier_function)}')
+    
+    if(tolerance_specifier_function == 'LOW_WARNING' or tolerance_specifier_function == 'HIGH_WARNING'):
+        print(f'EN: Warning! {BMS_parameter_name} {warning_range_specifier.get(tolerance_specifier_function)}')
 
 
 
