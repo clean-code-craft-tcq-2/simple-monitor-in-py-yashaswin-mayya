@@ -55,25 +55,34 @@ def print_on_console_german(range_specifier, battery_parameter_object, BMS_param
         print(f'\nDE: {BMS_parameter_name_german}: {BMS_parameter_value} liegt über der obergrenze')
 
 
+
+
 def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
     tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
     
-    if (warning_indicator.get(BMS_parameter_name)):
-        if(tolerance_specifier_function == 'LOW_WARNING'):
-            print(f'EN: Warning! {BMS_parameter_name} is approaching the lower limit')
-        elif(tolerance_specifier_function == 'HIGH_WARNING'):
-            print(f'EN: Warning! {BMS_parameter_name} is approaching the upper limit')
+    if not(warning_indicator.get(BMS_parameter_name)):
+        return
+        
+    if(tolerance_specifier_function == 'LOW_WARNING'):
+        print(f'EN: Warning! {BMS_parameter_name} is approaching the lower limit')
+    elif(tolerance_specifier_function == 'HIGH_WARNING'):
+        print(f'EN: Warning! {BMS_parameter_name} is approaching the upper limit')
+
+
+
 
 def print_early_warnings_german(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
     tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
     
-    if (warning_indicator.get(BMS_parameter_name)):
-        if(tolerance_specifier_function == 'LOW_WARNING'):
-            print(f'DE: Warnung! {BMS_parameter_name} nähert sich der untergrenze')
-        elif(tolerance_specifier_function == 'HIGH_WARNING'):
-            print(f'DE: Warnung! {BMS_parameter_name} nähert sich der oberen grenze')
+    if not(warning_indicator.get(BMS_parameter_name):
+        return
+
+    if(tolerance_specifier_function == 'LOW_WARNING'):
+        print(f'DE: Warnung! {BMS_parameter_name} nähert sich der untergrenze')
+    elif(tolerance_specifier_function == 'HIGH_WARNING'):
+        print(f'DE: Warnung! {BMS_parameter_name} nähert sich der oberen grenze')
 
 
 
