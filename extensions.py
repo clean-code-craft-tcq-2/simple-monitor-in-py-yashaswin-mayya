@@ -64,7 +64,7 @@ def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, B
 
     tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
 
-    warning_range_specifier ={
+    warning_range_specifier = {
         'LOW_WARNING' : 'is approaching the lower limit',
         'HIGH_WARNING' : 'is approaching the upper limit'
     }
