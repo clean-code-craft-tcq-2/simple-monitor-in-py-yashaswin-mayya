@@ -12,6 +12,15 @@ Extension 2 : Extension 2: Support a language in addition to English
     Also, easy to add new languages just by specifying in dictionary and creating a print function
 
 
+
+
+
+
+
+
+
+
+
 # Programming Paradigms
 
 Electric Vehicles have BMS - Battery Management Systems
