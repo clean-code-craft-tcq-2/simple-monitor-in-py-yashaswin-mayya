@@ -71,4 +71,4 @@ if __name__ == '__main__':
   battery_tester_object.tester('State_of_Charge', 20-0.1, False)
   battery_tester_object.tester('Charge_Rate', 0-0.1, False)
 
-  print('All is Well!')
+  print('EN: All is Well! \nDE: Alles est Gut!')
