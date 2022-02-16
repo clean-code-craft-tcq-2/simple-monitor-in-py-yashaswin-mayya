@@ -6,7 +6,7 @@ warning_indicator = {
     'Charge Rate' : True
 }
 
-language_support_select ={
+language_support_select = {
         'English' : True,
         'German' : True
     }
@@ -25,7 +25,7 @@ def print_on_console_main(range_specifier, battery_parameter_object, BMS_paramet
     
 def print_on_console_english(range_specifier, battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
-    if(range_specifier == 'NORMAL'):
+    if(range_specifier == 'NORMAL' or 'LOW_Warning' or 'HIGH_WARNING'):
         print(f'\nEN: {BMS_parameter_name}: {BMS_parameter_value} is within defined range')
         print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value)
     elif(range_specifier == 'LOW_BREACH'):
@@ -59,9 +59,6 @@ def print_on_console_german(range_specifier, battery_parameter_object, BMS_param
 
 def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
-    #if (warning_indicator.get(BMS_parameter_name) == False):
-        #return
-
     tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
 
     warning_range_specifier = {
@@ -70,7 +67,7 @@ def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, B
     }
     
     
-    if(tolerance_specifier_function == 'LOW_WARNING' or tolerance_specifier_function == 'HIGH_WARNING'):
+    if(tolerance_specifier_function == 'LOW_WARNING' or tolerance_specifier_function == 'HIGH_WARNING' and warning_indicator.get(BMS_parameter_name) == True):
         print(f'EN: Warning! {BMS_parameter_name} {warning_range_specifier.get(tolerance_specifier_function)}')
 
 
