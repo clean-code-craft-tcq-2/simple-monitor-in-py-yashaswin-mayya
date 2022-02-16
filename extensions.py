@@ -59,8 +59,8 @@ def print_on_console_german(range_specifier, battery_parameter_object, BMS_param
 
 def print_early_warnings_english(battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
     
-    if (warning_indicator.get(BMS_parameter_name) == False):
-        return
+    #if (warning_indicator.get(BMS_parameter_name) == False):
+        #return
 
     tolerance_specifier_function = battery_parameter_object.tolerance_specifier_function(BMS_parameter_value)
 
