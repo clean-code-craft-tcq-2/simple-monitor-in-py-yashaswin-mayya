@@ -20,26 +20,10 @@ class BMS_range_test:
     
     battery_parameter_object = parameters_dict.get(BMS_parameter_name)
     self.range_specifier = battery_parameter_object.range_specifier_function(BMS_parameter_value)
-    #self.range_specifier = range_check.BMS_parameter_range(0, 45).range_specifier_function
     self.obtained_result = self.obtained_result_mapping.get(self.range_specifier)
     assert(self.obtained_result is expected_result)
     extensions.print_on_console_main(self.range_specifier, battery_parameter_object, BMS_parameter_name, BMS_parameter_value)
 
-
-
-
-#def print_on_console_main(obtained_result, battery_parameter_object, BMS_parameter_name, BMS_parameter_value):
-    
-  #console_print_string = BMS_parameter_name.replace('_', ' ') #To remove undrscore (_) while displaying on console
-
-  
-  #if (obtained_result == True):
-    #print(f'\n{console_print_string}: {BMS_parameter_value} is within defined range')
-    #print_early_warnings(battery_parameter_object, BMS_parameter_name, BMS_parameter_value)
-  #else:
-    #print(f'\n{console_print_string}: {BMS_parameter_value} is out of defined range')
-
-      
 
   
 if __name__ == '__main__':
